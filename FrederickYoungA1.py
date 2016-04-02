@@ -41,15 +41,37 @@ function hiring_item():
 
 
 
-Menu = '\nMENU: \n(L)ist all items\n(H)ire an item\n(R)eturn an item\n(A)dd new item to stock\n(Q)uit'
+Menu = 'MENU: \n(L)ist all items\n(H)ire an item\n(R)eturn an item\n(A)dd new item to stock\n(Q)uit'
 
 def main():
+    print('\n\nItems for Hire - by Frederick Michael Young')
 
-
-    print('\n\nWelcome to the CP1404 Item Hiring Program!')
-    print('written by Frederick Michael Young, March 2016')
-
+    loading_items()
     print(Menu)
+    choice = input('>>> ').upper()
+    while choice != 'Q':
+        if choice == 'L':
+            listing_items()
+
+
+
+
+
+
+def loading_items():
+    INPUT_FILE = "items.csv"
+
+    in_file = open(INPUT_FILE, "r")
+    item_list = in_file.readlines()
+
+    num_items = 0
+
+    for row in item_list:
+        words_list = row.split()
+        num_items += 1
+    print(num_items, 'items loaded from items.csv')
+
+    in_file.close()
 
 
 
