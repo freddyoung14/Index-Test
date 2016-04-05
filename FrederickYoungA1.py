@@ -24,7 +24,7 @@ def main():
     choice = input('>>> ').upper()
     while choice != 'Q':
         if choice == 'L':
-            listing_items()
+            list_items()
 
 
 
