@@ -3,37 +3,10 @@
 	Frederick Michael Young
 	29/03/2016
 
-Pseudocode:
 
-...
-...
-...
+	GITHUB LINK - ....................
 
-function main()
-	display welcome message
-	display menu
-	get user choice
-
-	while choice is not 'Q'
-	    if choice is 'L'
-	        display all items
-
-	...
-	... <-- [finish after all other functions are complete.]
-
-function loading_items()
-    import csv
-
-
-
-
-
-
-
-function hiring_item():
-
-
-
+Pseudocode: (ONLY FOR loading_items & hiring_items) !!
 
 
 """
@@ -76,6 +49,43 @@ def loading_items():
 
 
 
+def add_items():
+    OUTPUT_FILE = "items.csv"
+
+    out_file = open(OUTPUT_FILE, "a")
+
+    row = []
+
+    item_add = (input('Item name: ')).capitalize()
+    item_description = (input('Description: ')).capitalize()
+
+    valid_input = False
+    while not valid_input:
+        try:
+            item_cost = float(input('Price per day: $'))
+            if item_cost < 0:
+                print('Price must be >= $0')
+            else:
+                valid_input = True
+        except ValueError:
+            print("Invalid Input/ enter a valid number")
+
+
+    row.append(item_add)
+    row.append(item_description)
+
+    print(','.join(row), file=out_file, end=',')
+
+    # printing item_cost separate because .join() method doesn't process integers/floats
+    row.append(item_cost)
+
+    print(item_cost, file=out_file, end=',')
+    print('in', file=out_file)
+
+    print('{} ({}), ${:.2f} now available for hire'.format(item_add, item_description, item_cost))
+
+
+    out_file.close()
 
 
 main()
