@@ -77,23 +77,15 @@ def list_items():
         mydictionary = row.split(',')
         count += 1
 
-        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, mydictionary[0], mydictionary[1], (float(mydictionary[2]))),
-              (mydictionary[3].replace('out', '*').replace('in', '')).strip())
-
-
+        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, mydictionary[0], mydictionary[1], (float(mydictionary[2]))), (mydictionary[3].replace('out', '*').replace('in', '')).strip())
 
     in_file.close()
 
 
+
 def add_items():
-    OUTPUT_FILE = "items.csv"
-
-    out_file = open(OUTPUT_FILE, "a")
-
-    row = []
-
-    item_add = (input('Item name: ')).capitalize()
-    item_description = (input('Description: ')).capitalize()
+    item_name = input("Item Name: ").capitalize()
+    item_description = input("Description: ").capitalize()
 
     valid_input = False
     while not valid_input:
@@ -107,24 +99,17 @@ def add_items():
             print("Invalid Input/ enter a valid number")
 
 
-    row.append(item_add)
-    row.append(item_description)
+    OUTPUT_FILE = open("items.csv", "a")
 
-    print(','.join(row), file=out_file, end=',')
+    print('{0},{1},{2},in'.format(item_name, item_description, item_cost),file=OUTPUT_FILE)
+    print('{0} ({1}), ${2:.2f} now available for hire'.format(item_name, item_description, item_cost))
 
-    # printing item_cost separate because .join() method doesn't process integers/floats
-    row.append(item_cost)
+    OUTPUT_FILE.close()
 
-    print(item_cost, file=out_file, end=',')
-    print('in', file=out_file)
-
-    print('{} ({}), ${:.2f} now available for hire'.format(item_add, item_description, item_cost))
-
-
-    out_file.close()
 
 
 main()
+
 
 
 

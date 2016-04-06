@@ -1,28 +1,35 @@
 # .py file for practicing/testing code.
 
-def item_add():
 
-    name = input("Item Name: ")
-    description = input("Description: ")
-    price = input("Price per day: ")
+"""
+def list_items():
+    print('All items on file (* indicates item is currently out):')
 
-    OUTPUT_FILE = open("items.csv", "a")
+    INPUT_FILE = "items.csv"
 
-
-
-    print('{},{},{},in'.format(name, description, price), file=OUTPUT_FILE)
-
-    OUTPUT_FILE.close()
-item_add()
+    in_file = open(INPUT_FILE, "r")
+    item_list = in_file.readlines()
 
 
-"""OUTPUT_FILE.write(name)
-    OUTPUT_FILE.write(description)
-    OUTPUT_FILE.write(price)
-    OUTPUT_FILE.close()
 
-    print(name)
+    table = [item_list]
 
+    count = -1
+
+    for row in item_list:
+        row = row.rstrip()
+        table = row.split(',')
+        count += 1
+
+        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, table[0], table[1], (float(table[2]))))
+
+    in_file.close()
+
+list_items()
+"""
+
+def list_items():
+    print('All items on file (* indicates item is currently out):')
 
     INPUT_FILE = "items.csv"
 
@@ -30,7 +37,7 @@ item_add()
     item_list = in_file.readlines()
 
     mydictionary = {'ColumnName1':0, 'ColumnName2':1, 'ColumnName3':2, 'ColumnName4':3}
-    # space = '' ---- couldn't figure out how to align cost in neat column...
+    # space = ''.center(4).ljust(20).rjust(6) --------- testing alignment
 
     count = -1
 
@@ -39,9 +46,12 @@ item_add()
         mydictionary = row.split(',')
         count += 1
 
-        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, mydictionary[0], mydictionary[1],
-                                                 (float(mydictionary[2]))),(mydictionary[3].replace('out', '*').replace('in', '')).strip())
-"""
+        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, mydictionary[0], mydictionary[1], (float(mydictionary[2]))), (mydictionary[3].replace('out', '*').replace('in', '')).strip())
+
+
+
+    in_file.close()
+list_items()
 
 
 
