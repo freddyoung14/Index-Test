@@ -70,6 +70,7 @@ def list_items():
     mydictionary = {'ItemName':0, 'ItemDescription':1, 'ItemCost':2, 'ItemStockValue':3}
     # space = '' <--- variable for 'neat' alignment
 
+    items = list(mydictionary)
     count = -1
 
     for row in item_list:
@@ -77,12 +78,14 @@ def list_items():
         mydictionary = row.split(',')
         item_name = mydictionary[0]
         item_description = mydictionary[1]
-        item_cost = mydictionary[2]
-        item_stock_value = mydictionary[3]
+        item_cost = float(mydictionary[2])
+        item_stock_value = mydictionary[3].replace('out', ' *').replace('in', ' ')
         count += 1
 
-        print('{0} - {1} ({2}) = ${3:.2f}{4}'.format(count, item_name, item_description, float(item_cost),
-                                                     item_stock_value.replace('out', ' *').replace('in', '')))
+        print('{} - {} ({}) = ${:.2f}{}'.format(count, item_name, item_description, item_cost,
+                                                     item_stock_value))
+
+
 
     in_file.close()
 
