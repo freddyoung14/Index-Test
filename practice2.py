@@ -25,6 +25,7 @@ hire_items()
 
 """
 
+list_items()
 
 
 

@@ -67,17 +67,22 @@ def list_items():
     in_file = open(INPUT_FILE, "r")
     item_list = in_file.readlines()
 
-    mydictionary = {'ColumnName1':0, 'ColumnName2':1, 'ColumnName3':2, 'ColumnName4':3}
-    # space = ''.center(4).ljust(20).rjust(6) --------- testing alignment
+    mydictionary = {'ItemName':0, 'ItemDescription':1, 'ItemCost':2, 'ItemStockValue':3}
+    # space = '' <--- variable for 'neat' alignment
 
     count = -1
 
     for row in item_list:
         row = row.rstrip()
         mydictionary = row.split(',')
+        item_name = mydictionary[0]
+        item_description = mydictionary[1]
+        item_cost = mydictionary[2]
+        item_stock_value = mydictionary[3]
         count += 1
 
-        print('{0} - {1} ({2}) = ${3:.2f}'.format(count, mydictionary[0], mydictionary[1], (float(mydictionary[2]))), (mydictionary[3].replace('out', '*').replace('in', '')).strip())
+        print('{0} - {1} ({2}) = ${3:.2f}{4}'.format(count, item_name, item_description, float(item_cost),
+                                                     item_stock_value.replace('out', ' *').replace('in', '')))
 
     in_file.close()
 
