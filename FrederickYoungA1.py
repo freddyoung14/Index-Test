@@ -36,6 +36,7 @@ def main():
         print(Menu)
         choice = input('>>> ').upper()
 
+    saving_items()
     print('Have a nice day :)')
 
 
@@ -59,6 +60,22 @@ def loading_items():
     in_file.close()
 
 
+def saving_items():
+    INPUT_FILE = "items.csv"
+
+    in_file = open(INPUT_FILE, "r")
+    item_list = in_file.readlines()
+
+    num_items = 0
+
+    for row in item_list:
+        words_list = row.split()
+        num_items += 1
+    print(num_items, 'items saved to items.csv')
+
+    in_file.close()
+
+
 def list_items():
     print('All items on file (* indicates item is currently out):')
 
@@ -71,7 +88,7 @@ def list_items():
     # space = '' <--- variable for 'neat' alignment
 
     items = list(mydictionary)
-    count = -1
+    count = 0
 
     for row in item_list:
         row = row.rstrip()
